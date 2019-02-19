@@ -17,7 +17,7 @@ Including another URLconf
 # Lo que se agrego despues de cerrar el corchete de urlpatterns es para
 # poder servir los archivos que se agregan en media/
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,4 +26,5 @@ import jobs.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', jobs.views.home, name='home'),
+    path('blog/', include('blog.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

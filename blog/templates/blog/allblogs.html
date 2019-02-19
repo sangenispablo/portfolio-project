@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Portfolio</title>
+    <title>Blog Personal</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -35,7 +35,7 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="#">Twitter</a>
                     <a class="nav-item nav-link" href="#">Currículum</a>
-                    <a class="nav-item nav-link" href="#">Blog</a>
+                    <a class="nav-item nav-link active" href="#">Blog</a>
                 </div>
             </div>
 
@@ -44,50 +44,23 @@
     </header>
 
     <main role="main">
+        <div class="container">
+            <h1 class="text-center pt-3">Bienvenido a mi Blog Personal !!!</h1>
+            <br>
+            <h2>Ultimos post...</h2>
+            <hr>
 
-        <!-- Lo primero que hay despues del NavBar es un Jumbotron bien grande -->
-        <section class="jumbotron text-center">
-            <div class="container">
+            {% for blog in blogs.all %}
+                <a href=""><h3>{{ blog.title }}</h3></a>
+                <p>Publicado el: {{ blog.pub_date_pretty }}</p>
+                <img class="img-fluid pb-2" width=25% src="{{ blog.image.url }}" alt="">
+                <br>
+                <p>{{ blog.summary }} ...</p>
+                <hr>
+                <br>
+            {% endfor %}
 
-                <!-- Titulo del jumbotron -->
-                <h1 class="jumbotron-heading">Hola, soy Pablo</h1>
-
-                <!-- Texto principal del jumbotron -->
-                <p class="lead text-muted">
-                    Hey, mi nombre es Pablo Alejandro Sangenis y me encanta la programación, ultimamente estoy especializandome en Django,
-                    usando todo el poder de Bootstrap con HTML5 y almacenando toda la información con PostgreSql,
-                    este sitio web personal es un buen ejemplo de lo que estoy haciendo.
-                </p>
-
-                <!-- Dos link tipo boton al pie del jumbotron -->
-                <p>
-                    <a href="mailto:sangenispablo@gmail.com" class="btn btn-primary my-2">Evíame un Correo</a>
-                </p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row">
-
-                    <!-- Aca vamos a meter un ciclo for para traer todos los registros de jobs -->
-                    {% for job in jobs.all %}
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top img-fluid" src="{{ job.image.url }}" alt="Card image">
-                                <div class="card-body">
-                                    <p class="card-text">{{ job.summary }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                </div>
-
-            </div>
         </div>
-
     </main>
 
     <!-- Al pie de la pagina se lo recorto mucho y quedo muy simple -->
