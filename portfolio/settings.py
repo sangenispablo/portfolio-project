@@ -130,6 +130,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portfolio/static/')
+]
+
+# Indica donde se tienen que guardar los archivos estaticos que usa el sitio
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Indica la forma en que se hace referencia al directorio y los archivos
 STATIC_URL = '/static/'
 
 # Esta constante indica donde se van a guardar los archivos de imagenes y demas

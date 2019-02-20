@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blog Personal</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <title>Blog Sangenis</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -22,7 +21,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
             <!-- Link que esta bien a la derecha -->
-            <a class="navbar-brand" href="#">Pablo Sangenis</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Pablo Sangenis</a>
 
             <!-- Este es el boton que aparece cuando el ancho es pequeño -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -33,9 +32,9 @@
             <!-- Estos son los links de la barra de navegacion -->
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="nav-item nav-link" href="#">Twitter</a>
-                    <a class="nav-item nav-link" href="#">Currículum</a>
-                    <a class="nav-item nav-link active" href="#">Blog</a>
+                    <a class="nav-item nav-link" href="http://twitter.com/molochetem">Twitter</a>
+                    <a class="nav-item nav-link" href="{% static 'curriculum.pdf' %}">Currículum</a>
+                    <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
                 </div>
             </div>
 
@@ -51,7 +50,7 @@
             <hr>
 
             {% for blog in blogs.all %}
-                <a href=""><h3>{{ blog.title }}</h3></a>
+                <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
                 <p>Publicado el: {{ blog.pub_date_pretty }}</p>
                 <img class="img-fluid pb-2" width=25% src="{{ blog.image.url }}" alt="">
                 <br>
