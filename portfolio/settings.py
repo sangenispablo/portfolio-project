@@ -145,3 +145,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # La constante que sigue indica como nos vamos a referir a esa imagen que se guardo en la BD
 # no necesariamente tiene que ser la misma que el directorio donde se guarda la imagen
 MEDIA_URL = '/media/'
+
+
+# Esto que viene es para poder tener dos configuraciones una para local y otra para cuando lo subamos a produccion
+
+try:
+    from local_setting import *
+except ImportError:
+    pass
